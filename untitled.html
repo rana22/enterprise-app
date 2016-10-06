@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+		<html>
+		<head>
+		<title>Lesson 21: Easy AJAX Calls with jQuery</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
+		</head>
+		<body>
+		<h1>Lesson 21: Easy AJAX Calls with jQuery load()</h1>
+		
+		<p><a href="#">Click here to fetch HTML content</a></p>
+		
+		<div id="result">
+		
+		</div>
+		
+		<script type="text/javascript">
+		
+		//JavaScript AJAX code here
+		// alert("check jquery")
+
+		$(document).ready(function(){
+			
+			$.ajax({url: "http://localhost:8080/lob/getAllTransanctions", success: function(response){
+		        $("#result").append("<h1>" +response[0].firstName+"</li>")
+		    }});
+			var data = JSON.stringify({
+						    "firstName": "test1234",
+						    "lastName": "Rana",
+						    "userName": "arana",
+						    "password":"soomePWD"
+						});
+			console.log("call post call")
+		    $.ajax({ type: "POST",
+		    		 url: "http://localhost:8080/add/user", 
+		    		 contentType: "application/json; charset=utf-8", 
+		    		 data: data,
+		    		 success: function(data, textStatus, jqXHR){
+		    			console.log("sonme  ==")
+		    			console.log("sonme  =="+JSON.stringify(data));
+		    			},
+		    			error: function(error){
+		    				console.log("error " + error)
+		    			}
+
+		    });
+
+		    $.ajax({ type: "DELETE",
+		    		 url: "http://localhost:8080/delete/transaction/123", 
+		    		 contentType: "application/json; charset=utf-8", 
+		    		 data: data,
+		    		 success: function(data, textStatus, jqXHR){
+		    			console.log("sonme  ==")
+		    			console.log("sonme  =="+JSON.stringify(data));
+		    			},
+		    			error: function(error){
+		    				console.log("error " + error)
+		    			}
+
+		    });
+
+		    $
+
+		});
+		
+		</script>
+			
+		</body>
+		</html>
